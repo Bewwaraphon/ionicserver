@@ -1,6 +1,6 @@
 <?php
 
-header("Access-Control_Allow-Origin: *");
+header("Access-Control-Allow-Origin: *");
 
 $servername = 'localhost';
 $username = 'root';
