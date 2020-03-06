@@ -15,25 +15,21 @@ if ($connect->connect_error) {
     die("การเชื่อมต่อผิดพลาด : " . $connect->connect_error);
 }
 
-$data = json_decode(file_get_contents("php://input"), true);
 
-if (count($data) > 0) {
-    $productid = $data["productid"];
-    $productname = $data["productname"];
-    $productprice = $data["productprice"];
-    $productdetail = $data["productdetail"];
+    $id = $_GET["id"];
 
-    $sql = "insert into products
-                (productid, productname, productprice, productdetail)
-            values
-                ('$productid','$productname', '$productprice', '$productdetail')
-                ";
+    $sql = "delete from products where id = $id";
+
+    // $result = $connect->query($sql);
+
     if ($connect->query($sql) === true) {
         $connect->close();
         return true;
+
     } else {
         $connect->close();
         return $connect->error;
-    }
+    
     $connect->close();
+
 }

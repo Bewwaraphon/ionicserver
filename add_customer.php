@@ -18,15 +18,16 @@ if ($connect->connect_error) {
 $data = json_decode(file_get_contents("php://input"), true);
 
 if (count($data) > 0) {
-    $productid = $data["productid"];
-    $productname = $data["productname"];
-    $productprice = $data["productprice"];
-    $productdetail = $data["productdetail"];
+    $c_id = $data["c_id"];
+    $c_name = $data["c_name"];
+    $c_lastname = $data["c_lastname"];
+    $c_address = $data["c_address"];
+    $c_tel = $data["c_tel"];
 
-    $sql = "insert into products
-                (productid, productname, productprice, productdetail)
+    $sql = "insert into customers
+                (c_id, c_name, c_lastname, c_address, c_tel)
             values
-                ('$productid','$productname', '$productprice', '$productdetail')
+                ('$c_id','$c_name', '$c_lastname', '$c_address', '$c_tel')
                 ";
     if ($connect->query($sql) === true) {
         $connect->close();
